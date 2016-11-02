@@ -11,11 +11,11 @@
 
 (setq python-packages
   '(
-    anaconda-mode
+    ;anaconda-mode
     company
-    (company-anaconda :toggle (configuration-layer/package-usedp 'company))
+    ;(company-anaconda :toggle (configuration-layer/package-usedp 'company))
     cython-mode
-    eldoc
+    ;eldoc
     evil-matchit
     flycheck
     ggtags
@@ -38,6 +38,7 @@
     stickyfunc-enhance
     xcscope
     yapfify
+    jedi
     ))
 
 (defun python/init-anaconda-mode ()
@@ -334,7 +335,7 @@
         ;; set compile command to buffer-file-name
         ;; universal argument put compile buffer in comint mode
         (let ((universal-argument t)
-              (compile-command (format "python %s" (file-name-nondirectory
+              (compile-command (format "python -u %s" (file-name-nondirectory
                                                     buffer-file-name))))
           (if arg
               (call-interactively 'compile)
