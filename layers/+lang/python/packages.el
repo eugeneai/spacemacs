@@ -11,11 +11,11 @@
 
 (setq python-packages
   '(
-    ;anaconda-mode
+    anaconda-mode
     company
-    ;(company-anaconda :toggle (configuration-layer/package-usedp 'company))
+    (company-anaconda :toggle (configuration-layer/package-usedp 'company))
     cython-mode
-    ;eldoc
+    eldoc
     evil-matchit
     flycheck
     ggtags
@@ -38,7 +38,6 @@
     stickyfunc-enhance
     xcscope
     yapfify
-    jedi
     ))
 
 (defun python/init-anaconda-mode ()
