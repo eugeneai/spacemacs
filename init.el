@@ -33,6 +33,6 @@
   (configuration-layer/sync)
   (spacemacs-buffer/display-info-box)
   (spacemacs/setup-startup-hook)
-  (load "~/.emacs.d/lisp/user.el")
+  ;(load "~/.emacs.d/lisp/user.el")
   (require 'server)
   (unless (server-running-p) (server-start)))
