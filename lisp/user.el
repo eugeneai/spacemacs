@@ -140,7 +140,7 @@
   (when (file-directory-p project)
     (add-to-list 'load-path project)))
 
-(add-to-list 'load-path ".")
+;(add-to-list 'load-path ".")
 
 ;; Keep emacs Custom-settings in separate file
 (if t ;; windowed-system
