@@ -105,12 +105,12 @@
 
 (setq reftex-plug-into-AUCTeX t)
 
-(require 'cursor-chg)
+;(require 'cursor-chg)
 (setq curchg-default-cursor-color "LightSkyBlue1")
 (setq curchg-input-method-cursor-color "red")
 (setq curchg-default-cursor-type '(hbar . 5))
-(change-cursor-mode 1) ; On for overwrite/read-only/input mode
-(toggle-cursor-type-when-idle 1) ; On when idle
+;(change-cursor-mode 1) ; On for overwrite/read-only/input mode
+;(toggle-cursor-type-when-idle 1) ; On when idle
 
 (setq windowed-system (or (eq window-system 'x) (eq window-system 'w32)))
 (setq win32-system (eq window-system 'w32))
