@@ -69,7 +69,7 @@
              (eldoc-mode)
 
              ;; Use flycheck-rust in rust-mode
-             (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+             ;(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
              ;; Use company-racer in rust mode
              (set (make-local-variable 'company-backends) '(company-racer))
@@ -83,8 +83,8 @@
           )
 
 (add-hook 'racer-mode-hook #'eldoc-mode)
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+;(eval-after-load 'flycheck
+;  '(add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 ; (setq-default TeX-master nil)
 (custom-set-variables
