@@ -97,13 +97,13 @@
  '(TeX-source-correlate-mode t)
  '(TeX-source-correlate-start-server (quote ask)))
 
-(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(add-hook 'LaTeX-mode-hook 'turn-off-auto-fill)
-(add-hook 'LaTeX-mode-hook 'turn-on-visual-line-mode)
-(add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
+;(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+;(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+;(add-hook 'LaTeX-mode-hook 'turn-off-auto-fill)
+;(add-hook 'LaTeX-mode-hook 'turn-on-visual-line-mode)
+;(add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
 
-(setq reftex-plug-into-AUCTeX t)
+;(setq reftex-plug-into-AUCTeX t)
 
 (require 'cursor-chg)
 (setq curchg-default-cursor-color "LightSkyBlue1")
@@ -617,9 +617,10 @@
 
 (defun turn-off-auto-fill ()
   (interactive)
-  (auto-fill-mode 0))
+  (auto-fill-mode 0)
+  )
 
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook 'turn-off-auto-fill)
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 
 (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
@@ -763,7 +764,7 @@
   ; (add-hook 'post-command-hook 'auto-language-environment)
   )
 
-(add-hook 'LaTeX-mode-hook 'latex-12-hacks)
+;(add-hook 'LaTeX-mode-hook 'latex-12-hacks)
 
 (global-set-key (kbd "C-`") 'linum-mode)
 (put 'scroll-left 'disabled nil)
