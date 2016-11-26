@@ -862,9 +862,10 @@ ov)
 
 ;; вместо aspell использовать hunspell
 (setq ispell-really-aspell nil
-      ispell-really-hunspell t)
+      ispell-really-hunspell t
+      ispell-dictionary "english")
 
-(setq ispell-program-name "/usr/bin/hunspell")
+(setq ispell-program-name "/usr/local/bin/hunspell")
 
 ;; ;(require 'ispell)
 
