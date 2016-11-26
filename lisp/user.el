@@ -218,9 +218,9 @@
 ;;(add-hook 'd-mode-hook 'auto-complete-mode)
 
 
-(autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
-(autoload 'flyspell-delay-command "flyspell" "Delay on command." t)
-(autoload 'tex-mode-flyspell-verify "flyspell" "" t)
+;(autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
+;(autoload 'flyspell-delay-command "flyspell" "Delay on command." t)
+;(autoload 'tex-mode-flyspell-verify "flyspell" "" t)
 
 (global-set-key (kbd "C-c q") 'auto-fill-mode)
 
@@ -634,13 +634,13 @@
   )
 
 (add-hook 'text-mode-hook 'turn-off-auto-fill)
-(add-hook 'text-mode-hook 'turn-on-flyspell)
+;(add-hook 'text-mode-hook 'turn-on-flyspell)
 
 (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 (add-hook 'diff-mode-hook 'turn-on-visual-line-mode)
 (add-hook 'latex-mode-hook 'turn-off-auto-fill)
 (add-hook 'latex-mode-hook 'turn-on-visual-line-mode)
-(add-hook 'latex-mode-hook 'turn-on-flyspell)
+;(add-hook 'latex-mode-hook 'turn-on-flyspell)
 
 ;;(add-hook 'latex-mode-hook 'highlight-changes-mode)
 
@@ -848,32 +848,43 @@ ov)
 ;; Some additional features
 (defalias 'qrr 'query-replace-regexp)
 
-;(require 'rw-language-and-country-codes)
-;(require 'rw-ispell)
-;(require 'rw-hunspell)
-;(add-to-list 'ispell-local-dictionary-alist  '("russian"
-;        "[АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюя]"
-;        "[^АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюя]"
-;        "[-]"  nil ("-d" "ru_RU") nil utf-8)
-;)
+; ########### HUNSPELL in EMACS ########################
 
-;(add-to-list 'ispell-local-dictionary-alist  '("english"
-;       "[A-Za-z]" "[^A-Za-z]"
-;       "[']"  nil ("-d" "en_US") nil iso-8859-1)
-;)
+;; список используемых нами словарей
+(setq ispell-local-dictionary-alist
+      '(("russian"
+         "[АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюя]"
+         "[^АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюя]"
+         "[-]"  nil ("-d" "ru_RU") nil utf-8)
+        ("english"
+         "[A-Za-z]" "[^A-Za-z]"
+         "[']"  nil ("-d" "en_US") nil iso-8859-1)))
 
-;(setq ispell-program-name "hunspell")
-;(setq ispell-program-name (executable-find "hunspell"))
-;(setq ispell-really-aspell nil
-;      ispell-really-hunspell t)
-;(setq ispell-dictionary "russian") ;"ru_RU_hunspell")
-;; The following is set via custom
-;(custom-set-variables
-; '(rw-hunspell-default-dictionary "russian") ;"ru_RU_hunspell")
-; '(rw-hunspell-dicpath-list (quote ("/usr/share/hunspell")))
-; '(rw-hunspell-make-dictionary-menu t)
-; '(rw-hunspell-use-rw-ispell t)
-; )
+;; вместо aspell использовать hunspell
+(setq ispell-really-aspell nil
+      ispell-really-hunspell t)
+
+(setq ispell-program-name "/usr/bin/hunspell")
+
+;; ;(require 'ispell)
+
+(defun fd-switch-dictionary()
+  (interactive)
+  (let* ((dic ispell-current-dictionary)
+         (change (if (string= dic "russian") "english" "russian")))
+    (ispell-change-dictionary change)
+    (message "Dictionary switched from %s to %s" dic change)
+    ))
+
+(global-set-key (kbd "<f8>")   'fd-switch-dictionary)
+
+;; ;; полный путь к нашему пропатченному hunspell
+;; ;;(setq ispell-program-name "/usr/bin/hunspell")
+
+;(load "enchant.el")
+
+; ########### END HUNSPELL in EMACS ########################
+
 
 (if (eq window-system 'w32)
     (progn
@@ -883,35 +894,7 @@ ov)
       )
   )
 
-;(setq ispell-program-name "c:/GNU/bin/aspell")
-;(setq ispell-program-name "aspell")
-;(setq ispell-personal-dictionary "C:/GNU/custom.ispell")
 
-;; (setq ispell-extra-args
-;;       '("--data-dir" "C:/GNU/data"
-;;         "--dict-dir" "C:/GNU/dict"
-;;         )
-;;       )
-
-(require 'ispell)
-
-(defun fd-switch-dictionary()
-  (interactive)
-      (let* ((dic ispell-current-dictionary)
-             (change (if (string= dic "ru-yeyo") "english" "ru-yeyo")))
-        (ispell-change-dictionary change)
-        (message "Dictionary switched from %s to %s" dic change)
-        ))
-
-;(require 'ispell-multi)
-;(require 'flyspell-babel)
-
-;(autoload 'flyspell-babel-setup "flyspell-babel")
-;(add-hook 'latex-mode-hook 'flyspell-babel-setup)
-
-(global-set-key (kbd "<f8>")   'fd-switch-dictionary)
-(global-set-key (kbd "<f7>")   'ispell-word)
-(put 'upcase-region 'disabled nil)
 
 (autoload
   'ace-jump-mode
