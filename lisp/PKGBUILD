@@ -12,7 +12,7 @@ license=('GPL' 'LGPL' 'MPL')
 depends=('gcc-libs' 'readline')
 optdepends=('perl: for ispellaff2myspell')
 source=(https://github.com/hunspell/hunspell/archive/v${pkgver}.tar.gz)
-md5sums=('cdf30f5a44a389d5461245ba7a9f4eb3')
+md5sums=('966221ed29464f9b1f8c3898fbf77871')
 #conflicts=('hunspell')
 #provides=('hunspell')
 
