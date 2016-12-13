@@ -305,7 +305,8 @@
 ;(global-set-key [f7] 'split-window-vertically)
 ;(global-set-key [f8] 'delete-other-windows)
 ;(global-set-key [f9] 'split-window-horizontally)
-;(global-set-key (kbd "C-j") 'newline-and-indent)
+(global-set-key (kbd "C-j") 'newline-and-indent)
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 (require 'open-next-line)
 
