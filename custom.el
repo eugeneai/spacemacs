@@ -10,6 +10,8 @@
  '(TeX-source-correlate-method (quote synctex))
  '(TeX-source-correlate-mode t)
  '(TeX-source-correlate-start-server (quote ask))
+ '(markdown-coding-system (quote utf-8))
+ '(markdown-xhtml-header-content "<meta charset=\"utf-8\">")
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
