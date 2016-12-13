@@ -31,5 +31,5 @@
  '(js2-function-call ((t (:inherit default))))
  '(minibuffer-prompt ((t (:foreground "CadetBlue1"))))
  '(mode-line ((t (:background "gray75" :foreground "black" :weight normal :height 0.5 :family "Droid Sans"))))
- '(mode-line-highlight ((t (:background "gold"))))
+ '(mode-line-highlight ((t (:background "gold" :foreground "black"))))
  '(tex-verbatim ((t (:family "Inconsolata LGC Medium")))))
