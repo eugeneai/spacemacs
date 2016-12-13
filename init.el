@@ -1,7 +1,25 @@
 ;; init.el --- Emacs configuration
 
+
+
+;; BASIC CUSTOMIZATION
+;; --------------------------------------
+
+(setq inhibit-startup-message t) ;; hide the startup message
+(menu-bar-mode -1) ;; hide menu bar
+(load-theme 'eugeneai-theme t) ;; load material theme
+;(global-linum-mode t) ;; enable line numbers globally
+
+;; If async is installed
+(add-to-list 'load-path "~/.emacs.d/site-lisp/async")
+
+(add-to-list 'load-path "~/.emacs.d/site-lisp/helm")
+
+
 ;; INSTALL PACKAGES
 ;; --------------------------------------
+(setq windowed-system (or (eq window-system 'x) (eq window-system 'w32)))
+(setq win32-system (eq window-system 'w32))
 
 (if (eq window-system 'w32)
     (progn
@@ -88,19 +106,6 @@
       (package-install package)))
       myPackages)
 
-;; BASIC CUSTOMIZATION
-;; --------------------------------------
-
-(setq inhibit-startup-message t) ;; hide the startup message
-(menu-bar-mode -1) ;; hide menu bar
-(load-theme 'eugeneai-theme t) ;; load material theme
-;(global-linum-mode t) ;; enable line numbers globally
-
-;; If async is installed
-(add-to-list 'load-path "~/.emacs.d/site-lisp/async")
-
-(add-to-list 'load-path "~/.emacs.d/site-lisp/helm")
-
 
 
 ;; PYTHON CONFIGURATION
@@ -145,8 +150,6 @@
 (change-cursor-mode 1) ; On for overwrite/read-only/input mode
 (toggle-cursor-type-when-idle 1) ; On when idle
 
-(setq windowed-system (or (eq window-system 'x) (eq window-system 'w32)))
-(setq win32-system (eq window-system 'w32))
 ;(setq backup-directory-alist `(("." . ,(expand-file-name
    ;(concat dotfiles-dir "backups")))))
 
@@ -202,7 +205,7 @@
 
 (setq-default
  default-truncate-lines t
- blink-cursor-alist '((t . hollow))
+ ; blink-cursor-alist '((t . hollow))
  user-full-name "Evgeny Cherkashin"
  user-mail-address "eugeneai@irnok.net"
  column-number-mode t
